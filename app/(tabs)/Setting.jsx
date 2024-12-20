@@ -1,24 +1,19 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { 
   List, 
   Switch, 
-  Text, 
   Divider, 
   useTheme,
-  RadioButton,
-  Button,
-  Card
+ 
 } from 'react-native-paper';
-import { useThemeStore } from '@/lib/Themes';
 import useSearchStore from '@/lib/MainStore';
 
 export default function Settings() {
   const theme = useTheme();
   const { clearHistory } = useSearchStore();
-  const { theme: currentTheme, toggleTheme, isDarkMode } = useThemeStore();
   
-  // Local state for settings
+
   const [notifications, setNotifications] = React.useState(false);
   const [emailUpdates, setEmailUpdates] = React.useState(false);
   const [priceAlerts, setPriceAlerts] = React.useState(false);

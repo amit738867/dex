@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
-import { ActivityIndicator, Searchbar, Text, Card, Button, Avatar } from 'react-native-paper';
+import { ActivityIndicator, Searchbar, Text, Card, Button, Avatar, useTheme, } from 'react-native-paper';
 import { searchEngine } from '@/lib/SearchEngine';
 import Bannerlogo from '@/constants/SiteLogos';
 import useSearchStore from '@/lib/MainStore';
-import { useThemeStore } from '@/lib/Themes';
 
 export default function Search() {
   const [productlist, setProductlist] = useState([]);
@@ -13,9 +12,8 @@ export default function Search() {
   const [searched, setSearched] = useState(false);
   const [filteredKeys, setFilteredKeys] = useState([]);
 
-  // Get theme and toggle function from global store
-  const { theme, toggleTheme } = useThemeStore();
   const { searchHistory, addSearch} = useSearchStore();
+  const theme = useTheme();
 
   const fetchProduct = async () => {
     try {
